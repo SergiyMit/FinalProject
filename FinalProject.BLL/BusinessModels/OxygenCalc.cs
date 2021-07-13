@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalProject.DAL.Entities
+namespace FinalProject.BLL.BusinessModels
 {
-    public class OxygenCalc
+    class OxygenCalc
     {
         public int TimeOxygen { get; set; }
         public int DeepOxygen { get; set; }

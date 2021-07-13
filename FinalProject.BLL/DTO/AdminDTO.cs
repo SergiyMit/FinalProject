@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalProject.DAL.Entities
+namespace FinalProject.BLL.DTO
 {
-    public partial class Admin
+    class AdminDTO
     {
         public int IdAdmin { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int? PersonalAccessCode { get; set; }
-        public User User { get; set; }
+        public int UserId { get; set; }
     }
 }

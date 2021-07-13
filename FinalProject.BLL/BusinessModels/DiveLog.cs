@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalProject.DAL.Entities
+namespace FinalProject.BLL.BusinessModels
 {
-    public partial class DiveLog
+    class DiveLog
     {
         private int IdDive;
         public int WeightsAmount { get; set; }
@@ -14,6 +14,6 @@ namespace FinalProject.DAL.Entities
         public decimal OxygenAtStart { get; set; }
         public decimal OxygenAtEnd { get; set; }
         public string DiveSite { get; set; }
-        DiveMeasurement diveMeasurement;
+        public int diveMeasurementId { get; set; }
     }
 }

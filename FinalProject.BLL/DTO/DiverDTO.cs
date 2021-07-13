@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalProject.DAL.Entities
+namespace FinalProject.BLL.DTO
 {
-    public partial class Diver
+    class DiverDTO
     {
         public int IdDiver { get; set; }
         public string Name { get; set; }
@@ -15,6 +15,6 @@ namespace FinalProject.DAL.Entities
         public string Email { get; set; }
         public int? TelNumber { get; set; }
         public int? DeviceNumber { get; set; }
-        public User User { get; set; }
+        public int UserId { get; set; }
     }
 }
