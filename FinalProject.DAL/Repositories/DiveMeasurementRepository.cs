@@ -34,7 +34,7 @@ namespace FinalProject.DAL.Repositories
 
         public void Update(DiveMeasurement item)
         {
-            db.Entry(item).State = EntityState.Modified;
+            db.Update(item);
         }
 
         public IEnumerable<DiveMeasurement> Find(Func<DiveMeasurement, Boolean> predicate)

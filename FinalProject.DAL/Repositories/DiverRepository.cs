@@ -34,7 +34,7 @@ namespace FinalProject.DAL.Repositories
 
         public void Update(Diver item)
         {
-            db.Entry(item).State = EntityState.Modified;
+            db.Update(item);
         }
 
         public IEnumerable<Diver> Find(Func<Diver, Boolean> predicate)

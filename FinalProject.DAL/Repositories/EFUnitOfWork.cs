@@ -16,7 +16,7 @@ namespace FinalProject.DAL.Repositories
         private UserRepository userRepository;
         public EFUnitOfWork(string connectionString)
         {
-            db = new NixDatabaseContext(connectionString);
+            db = new NixDatabaseContext();
         }
         public IRepository<Admin> Admins
         {

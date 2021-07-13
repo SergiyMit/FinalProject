@@ -32,7 +32,7 @@ namespace FinalProject.DAL.Repositories
 
         public void Update(Admin item)
         {
-            db.Entry(item).State = EntityState.Modified;
+            db.Update(item);
         }
 
         public IEnumerable<Admin> Find(Func<Admin, Boolean> predicate)

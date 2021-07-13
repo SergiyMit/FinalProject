@@ -34,7 +34,7 @@ namespace FinalProject.DAL.Repositories
 
         public void Update(User item)
         {
-            db.Entry(item).State = EntityState.Modified;
+            db.Update(item);
         }
 
         public IEnumerable<User> Find(Func<User, Boolean> predicate)

@@ -34,7 +34,7 @@ namespace FinalProject.DAL.Repositories
 
         public void Update(DiveCertificate item)
         {
-            db.Entry(item).State = EntityState.Modified;
+            db.Update(item);
         }
 
         public IEnumerable<DiveCertificate> Find(Func<DiveCertificate, Boolean> predicate)
