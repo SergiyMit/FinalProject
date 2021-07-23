@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.DAL.Interfaces
 {
-    interface IUnitOfWork: IDisposable
+    public interface IUnitOfWork: IDisposable
     {
         IRepository<Admin> Admins { get; }
         IRepository<CertificateLevel> CertificateLevels { get; }

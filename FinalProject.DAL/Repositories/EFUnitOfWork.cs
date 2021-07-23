@@ -5,7 +5,7 @@ using System;
 
 namespace FinalProject.DAL.Repositories
 {
-    class EFUnitOfWork : IUnitOfWork
+    public class EFUnitOfWork : IUnitOfWork
     {
         private NixDatabaseContext db;
         private AdminRepository adminRepository;
