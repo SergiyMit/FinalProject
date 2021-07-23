@@ -11,7 +11,10 @@ namespace FinalProject.DAL.Entities
         public int IdCertificate { get; set; }
         public string CertNumber { get; set; }
         public DateTime? DateOfIssuance { get; set; }
-        public CertificateLevel CertificateLevel { get; set; }
-        public Diver Diver { get; set; }
+        public int? IdLevel { get; set; }
+        public int? IdDiver { get; set; }
+
+        public virtual Diver IdDiverNavigation { get; set; }
+        public virtual CertificateLevel IdLevelNavigation { get; set; }
     }
 }

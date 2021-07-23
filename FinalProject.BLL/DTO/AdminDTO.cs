@@ -12,6 +12,6 @@ namespace FinalProject.BLL.DTO
         public string Name { get; set; }
         public string Surname { get; set; }
         public int? PersonalAccessCode { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
     }
 }

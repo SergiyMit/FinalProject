@@ -28,13 +28,13 @@ namespace FinalProject.BLL.Services
         public AdminDTO GetAdmin(int id)
         {
             var admin = Database.Admins.Get(id);
-            return new AdminDTO { IdAdmin = admin.IdAdmin, Name = admin.Name, Surname = admin.Surname, PersonalAccessCode = admin.PersonalAccessCode, UserId = admin.User.IdUser };
+            return new AdminDTO { IdAdmin = admin.IdAdmin, Name = admin.Name, Surname = admin.Surname, PersonalAccessCode = admin.PersonalAccessCode, UserId = admin.IdUser };
         }
 
         public DiverDTO GetDiver(int id)
         {
             var diver = Database.Divers.Get(id);
-            return new DiverDTO {IdDiver = diver.IdDiver, Age = diver.Age, Name = diver.Name, Surname = diver.Surname, Email = diver.Email, TelNumber = diver.TelNumber, DeviceNumber = diver.DeviceNumber, UserId = diver.User.IdUser };
+            return new DiverDTO {IdDiver = diver.IdDiver, Age = diver.Age, Name = diver.Name, Surname = diver.Surname, Email = diver.Email, TelNumber = diver.TelNumber, DeviceNumber = diver.DeviceNumber, UserId = diver.IdUser };
         }
     }
 }

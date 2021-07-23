@@ -15,6 +15,6 @@ namespace FinalProject.BLL.DTO
         public string Email { get; set; }
         public int? TelNumber { get; set; }
         public int? DeviceNumber { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
     }
 }

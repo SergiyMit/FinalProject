@@ -8,11 +8,17 @@ namespace FinalProject.DAL.Entities
 {
     public partial class CertificateLevel
     {
+        public CertificateLevel()
+        {
+            DiveCertificates = new HashSet<DiveCertificate>();
+        }
+
         public int IdLevel { get; set; }
         public string LevelName { get; set; }
         public int? MaxAllowedDeep { get; set; }
         public int? RequiredDives { get; set; }
         public string AdditionalInfo { get; set; }
-        public DiveCertificate DiveCertificate { get; set; }        
+
+        public virtual ICollection<DiveCertificate> DiveCertificates { get; set; }
     }
 }
