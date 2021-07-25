@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewData["Title"] = "RegisterPage";
+}
+<head>
+    <style>
+        #registerInput {
+            padding: 0px;
+            margin: auto;
+        }
+
+        #registerSubmit {
+            margin-top: 5%;
+            margin-left: 15%;
+        }
+
+        #registerForm {
+            background: #AFEEEE;
+            border-radius: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        label {
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            font-size: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            color: red;
+        }
+        .pressed-button {
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 40px;
+            margin-bottom: 3%;
+            margin-top: 3%;
+            margin-left: 42%;
+            border-radius: 30px;
+            background-image: linear-gradient(45deg, #6ab1d7 0%, #33d9de 50%, #002878 100%);
+            background-position: 100% 0;
+            background-size: 200% 200%;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 300;
+            color: white;
+            box-shadow: 0 16px 32px 0 rgba(0, 40, 120, .35);
+            transition: .5s;
+        }
+            .pressed-button:hover {
+                box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
+                background-position: 0 0;
+            }
+
+        #loginButton {
+            background-color: #00C5BE;
+            border: none;
+            color: #fff;
+            font-size: 1em;
+            padding: 10px 50px;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<h1>Login for divers</h1>
+<div class="container register-form" id="registerForm">
+    <form method="post">
+        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" id="registerInput">
+            <label>Login:</label><br />
+            <input type="text" name="login" required /><br /><br />
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" id="registerInput">
+            <label>Password:</label><br />
+            <input type="password" name="password" required /><br /><br />
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" class="form-group" id="registerSubmit">
+                <input type="submit" value="Login" id="loginButton" />
+            </div>
+        </div>
+    </form>
+    <a href="@Url.Action("RegisterPage", "Register")" class="pressed-button">Register</a>
+    <h2>Wrong password or login! Please, try again</h2>
+</div>

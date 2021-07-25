@@ -50,5 +50,12 @@ namespace FinalProject.DAL.Repositories
             if (certificateLevel != null)
                 db.CertificateLevels.Remove(certificateLevel);
         }
+
+        public CertificateLevel GetByLogin(string login)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }

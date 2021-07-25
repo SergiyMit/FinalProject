@@ -50,5 +50,10 @@ namespace FinalProject.DAL.Repositories
             if (admin != null)
                 db.Admins.Remove(admin);
         }
+
+        public Admin GetByLogin(string login)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

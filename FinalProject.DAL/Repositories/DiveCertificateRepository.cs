@@ -52,5 +52,10 @@ namespace FinalProject.DAL.Repositories
             if (diveCertificate != null)
                 db.DiveCertificates.Remove(diveCertificate);
         }
+
+        public DiveCertificate GetByLogin(string login)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

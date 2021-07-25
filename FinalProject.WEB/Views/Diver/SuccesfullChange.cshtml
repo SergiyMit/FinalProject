@@ -1,0 +1,92 @@
+﻿@model FinalProject.WEB.Models.DiverViewModel
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_DiverLayout.cshtml";
+}
+<head>
+    <style>
+        #changeInput {
+            padding: 0px;
+            margin: auto;
+        }
+
+        #changeSubmit {
+            margin-top: 5%;
+            margin-left: 15%;
+        }
+
+        #changeForm {
+            background: #AFEEEE;
+            border-radius: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        label {
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            font-size: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #changeButton {
+            background-color: #00C5BE;
+            border: none;
+            color: #fff;
+            font-size: 1em;
+            padding: 10px;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+        h2 {
+            text-align: center;
+            color: green;
+        }
+    </style>
+</head>
+<h1>Change your info</h1>
+<div class="container register-form" id="changeForm">
+    <div class="form">
+        <div class="form-content">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" id="changeInput">
+                            <label>Telephone number:</label><br />
+                            <input type="number" name="telNumber" value="@Model.TelNumber" required /><br /><br />
+                        </div>
+                        <div class="form-group" id="changeInput">
+                            <label>Email:</label><br />
+                            <input type="email" name="email" value="@Model.Email" required /><br /><br />
+                        </div>
+                        <div class="form-group" id="changeInput">
+                            <label>#Device number:</label><br />
+                            <input type="number" name="deviceNumber" value="@Model.DeviceNumber" required /><br /><br />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="changeInput">
+                            <label>Name:</label><br />
+                            <input type="text" name="name" value="@Model.Name" required /><br /><br />
+                        </div>
+                        <div class="form-group" id="changeInput">
+                            <label>Surname:</label><br />
+                            <input type="text" name="surname" value="@Model.Surname" required /><br /><br />
+                        </div>
+                        <div class="form-group" id="changeInput">
+                            <label>Age:</label><br />
+                            <input type="number" name="age" value="@Model.Age" required /><br /><br />
+                        </div>
+                        <input type="hidden" value="@Model.IdDiver" name="idDiver" />
+                        <div class="form-group" id="changeSubmit">
+                            <input type="submit" value="Change info" id="changeButton" />
+                        </div>
+                        <h2>Diver's info succesfully changed</h2>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

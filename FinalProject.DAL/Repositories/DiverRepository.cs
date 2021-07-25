@@ -23,10 +23,13 @@ namespace FinalProject.DAL.Repositories
         {
             return db.Divers.Find(id);
         }
-        public Diver GetId(string name)
+        public Diver GetByLogin(string login)
         {
-            return db.Divers.Find(name);
+            int idUser = (from user in db.Users where user.Login == login select user.IdUser).FirstOrDefault();
+            Diver diver = (from d in db.Divers where d.IdUser == idUser select d).FirstOrDefault();
+            return diver;
         }
+
         public void Create(Diver item)
         {
             db.Divers.Add(item);
@@ -36,6 +39,7 @@ namespace FinalProject.DAL.Repositories
         public void Update(Diver item)
         {
             db.Update(item);
+            db.SaveChanges();
         }
 
         public IEnumerable<Diver> Find(Func<Diver, Boolean> predicate)
@@ -48,6 +52,11 @@ namespace FinalProject.DAL.Repositories
             Diver diver = db.Divers.Find(id);
             if (diver != null)
                 db.Divers.Remove(diver);
+        }
+
+        public Diver GetId(string login)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalProject.DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace FinalProject.DAL.Interfaces
     {
         IEnumerable<T> GetAll();
         T Get(int id);
+        T GetByLogin(string login);
         T GetId(string login);
         IEnumerable<T> Find(Func<T, Boolean> predicate);
         void Create(T item);

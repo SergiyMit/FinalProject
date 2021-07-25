@@ -52,5 +52,10 @@ namespace FinalProject.DAL.Repositories
             if (diveMeasurement != null)
                 db.DiveMeasurements.Remove(diveMeasurement);
         }
+
+        public DiveMeasurement GetByLogin(string login)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

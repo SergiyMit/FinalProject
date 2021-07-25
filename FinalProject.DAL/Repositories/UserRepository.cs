@@ -51,5 +51,11 @@ namespace FinalProject.DAL.Repositories
             if (user != null)
                 db.Users.Remove(user);
         }
+
+        public User GetByLogin(string login)
+        {
+            var user = (from u in db.Users where u.Login == login select u).FirstOrDefault();
+            return user;
+        }
     }
 }
