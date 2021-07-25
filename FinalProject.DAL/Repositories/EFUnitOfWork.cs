@@ -7,7 +7,7 @@ namespace FinalProject.DAL.Repositories
 {
     public class EFUnitOfWork : IUnitOfWork
     {
-        private NixDatabaseContext db;
+        private readonly NixDatabaseContext db;
         private AdminRepository adminRepository;
         private CertificateLevelRepository certificateLevelRepository;
         private DiveCertificateRepository diveCertificateRepository;

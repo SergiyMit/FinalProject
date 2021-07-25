@@ -33,6 +33,7 @@ namespace FinalProject.DAL.Repositories
         public void Create(DiveMeasurement item)
         {
             db.DiveMeasurements.Add(item);
+            db.SaveChanges();
         }
 
         public void Update(DiveMeasurement item)

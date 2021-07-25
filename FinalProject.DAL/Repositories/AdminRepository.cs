@@ -31,6 +31,7 @@ namespace FinalProject.DAL.Repositories
         public void Create(Admin item)
         {
             db.Admins.Add(item);
+            db.SaveChanges();
         }
 
         public void Update(Admin item)

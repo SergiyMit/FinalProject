@@ -1,21 +1,16 @@
-﻿using FinalProject.WEB.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using FinalProject.BLL.Services;
 using FinalProject.BLL.DTO;
-using FinalProject.DAL.Entities;
-using Ninject;
-using Ninject.Modules;
-using FinalProject.WEB.Util;
-using FinalProject.BLL.Infrastructure;
+
 
 namespace FinalProject.WEB.Controllers
 {
     public class RegisterController : Controller
     {
         IUserService userService;
-        public RegisterController(IUserService serv)
+        public RegisterController()
         {
-            userService = serv;
+            userService = new UserService();
         }
 
         [HttpGet]
@@ -30,7 +25,6 @@ namespace FinalProject.WEB.Controllers
             UserDTO user = new UserDTO { Login = login, Password = password, UserType = 1 };
             userService.AddDiver(diver, user);
             userService.Dispose();
-             
             return View();
         }
     }

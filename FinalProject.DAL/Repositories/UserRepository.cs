@@ -1,10 +1,7 @@
 ﻿using FinalProject.DAL.Entities;
-using System.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FinalProject.DAL.EF;
 using FinalProject.DAL.Interfaces;
 
@@ -12,7 +9,7 @@ namespace FinalProject.DAL.Repositories
 {
     class UserRepository : IRepository<User>
     {
-        private readonly NixDatabaseContext db;
+        private NixDatabaseContext db;
         public UserRepository(NixDatabaseContext context)
         {
             this.db = context;
@@ -29,11 +26,13 @@ namespace FinalProject.DAL.Repositories
 
         public User GetId(string login)
         {
-            return db.Users.Find(login);
+            var user = db.Users.Where(u => u.Login == login).FirstOrDefault();
+            return user;
         }
         public void Create(User item)
         {
             db.Users.Add(item);
+            db.SaveChanges();
         }
 
         public void Update(User item)

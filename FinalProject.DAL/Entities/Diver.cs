@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.DAL.Entities
 {
-    public partial class Diver : User
+    public partial class Diver
     {
         public Diver()
         {

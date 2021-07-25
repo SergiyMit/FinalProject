@@ -1,11 +1,7 @@
 ﻿using FinalProject.BLL.DTO;
 using FinalProject.DAL.Entities;
 using FinalProject.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FinalProject.DAL.Repositories;
 
 namespace FinalProject.BLL.Services
 {
@@ -13,9 +9,9 @@ namespace FinalProject.BLL.Services
     {
         IUnitOfWork Database { get; set; }
 
-        public UserService(IUnitOfWork uow)
+        public UserService()
         {
-            Database = uow;
+            Database = new EFUnitOfWork("connection");
         }
         public void Dispose()
         {
@@ -41,9 +37,9 @@ namespace FinalProject.BLL.Services
         public void AddDiver(DiverDTO diver, UserDTO user)
         {
             var userToAdd = new User {Login = user.Login, Password = user.Password, UserType = 1 };
+            Database.Users.Create(userToAdd);
             int userId = Database.Users.GetId(user.Login).IdUser;
             var diverToAdd = new Diver { Name = diver.Name, Surname = diver.Surname, Email = diver.Email, Age = diver.Age, TelNumber = 1, DeviceNumber = diver.DeviceNumber, IdUser = userId };
-            Database.Users.Create(userToAdd);
             Database.Divers.Create(diverToAdd);
         }
     }

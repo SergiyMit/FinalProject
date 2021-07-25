@@ -33,6 +33,7 @@ namespace FinalProject.DAL.Repositories
         public void Create(DiveCertificate item)
         {
             db.DiveCertificates.Add(item);
+            db.SaveChanges();
         }
 
         public void Update(DiveCertificate item)

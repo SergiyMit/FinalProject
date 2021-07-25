@@ -31,6 +31,7 @@ namespace FinalProject.DAL.Repositories
         public void Create(CertificateLevel item)
         {
             db.CertificateLevels.Add(item);
+            db.SaveChanges();
         }
 
         public void Update(CertificateLevel item)

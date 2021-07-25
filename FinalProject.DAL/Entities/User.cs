@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace FinalProject.DAL.Entities
 {
-    public class User 
+    public partial class User
     {
-
         public User()
         {
             Admins = new HashSet<Admin>();

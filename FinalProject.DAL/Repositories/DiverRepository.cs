@@ -30,6 +30,7 @@ namespace FinalProject.DAL.Repositories
         public void Create(Diver item)
         {
             db.Divers.Add(item);
+            db.SaveChanges();
         }
 
         public void Update(Diver item)
