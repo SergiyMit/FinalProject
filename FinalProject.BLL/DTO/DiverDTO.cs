@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.BLL.DTO
 {
-    class DiverDTO
+    public class DiverDTO
     {
         public int IdDiver { get; set; }
         public string Name { get; set; }

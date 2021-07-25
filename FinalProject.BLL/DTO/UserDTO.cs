@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.BLL.DTO
 {
-    class UserDTO
+    public class UserDTO
     {
         public int IdUser { get; set; }
         public string Login { get; set; }

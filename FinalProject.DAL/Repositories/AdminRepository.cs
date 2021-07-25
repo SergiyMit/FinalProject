@@ -24,7 +24,10 @@ namespace FinalProject.DAL.Repositories
         {
             return db.Admins.Find(id);
         }
-
+        public Admin GetId(string login)
+        {
+            return db.Admins.Find(login);
+        }
         public void Create(Admin item)
         {
             db.Admins.Add(item);

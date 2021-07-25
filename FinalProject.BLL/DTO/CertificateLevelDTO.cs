@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.BLL.DTO
 {
-    class CertificateLevelDTO
+    public class CertificateLevelDTO
     {
         public int IdLevel { get; set; }
         public string LevelName { get; set; }

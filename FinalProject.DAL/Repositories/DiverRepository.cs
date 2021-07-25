@@ -23,7 +23,10 @@ namespace FinalProject.DAL.Repositories
         {
             return db.Divers.Find(id);
         }
-
+        public Diver GetId(string name)
+        {
+            return db.Divers.Find(name);
+        }
         public void Create(Diver item)
         {
             db.Divers.Add(item);

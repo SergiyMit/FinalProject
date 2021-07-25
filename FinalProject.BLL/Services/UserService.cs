@@ -1,4 +1,5 @@
 ﻿using FinalProject.BLL.DTO;
+using FinalProject.DAL.Entities;
 using FinalProject.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.BLL.Services
 {
-    class UserService : IUserService
+    public class UserService : IUserService
     {
         IUnitOfWork Database { get; set; }
 
@@ -35,6 +36,15 @@ namespace FinalProject.BLL.Services
         {
             var diver = Database.Divers.Get(id);
             return new DiverDTO {IdDiver = diver.IdDiver, Age = diver.Age, Name = diver.Name, Surname = diver.Surname, Email = diver.Email, TelNumber = diver.TelNumber, DeviceNumber = diver.DeviceNumber, UserId = diver.IdUser };
+        }
+
+        public void AddDiver(DiverDTO diver, UserDTO user)
+        {
+            var userToAdd = new User {Login = user.Login, Password = user.Password, UserType = 1 };
+            int userId = Database.Users.GetId(user.Login).IdUser;
+            var diverToAdd = new Diver { Name = diver.Name, Surname = diver.Surname, Email = diver.Email, Age = diver.Age, TelNumber = 1, DeviceNumber = diver.DeviceNumber, IdUser = userId };
+            Database.Users.Create(userToAdd);
+            Database.Divers.Create(diverToAdd);
         }
     }
 }

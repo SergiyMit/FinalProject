@@ -26,7 +26,10 @@ namespace FinalProject.DAL.Repositories
         {
             return db.DiveCertificates.Find(id);
         }
-
+        public DiveCertificate GetId(string number)
+        {
+            return db.DiveCertificates.Find(number);
+        }
         public void Create(DiveCertificate item)
         {
             db.DiveCertificates.Add(item);

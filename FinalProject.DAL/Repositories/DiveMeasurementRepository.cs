@@ -26,7 +26,10 @@ namespace FinalProject.DAL.Repositories
         {
             return db.DiveMeasurements.Find(id);
         }
-
+        public DiveMeasurement GetId(string login)
+        {
+            return null;
+        }
         public void Create(DiveMeasurement item)
         {
             db.DiveMeasurements.Add(item);

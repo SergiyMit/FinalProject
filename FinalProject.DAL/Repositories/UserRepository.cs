@@ -27,6 +27,10 @@ namespace FinalProject.DAL.Repositories
             return db.Users.Find(id);
         }
 
+        public User GetId(string login)
+        {
+            return db.Users.Find(login);
+        }
         public void Create(User item)
         {
             db.Users.Add(item);

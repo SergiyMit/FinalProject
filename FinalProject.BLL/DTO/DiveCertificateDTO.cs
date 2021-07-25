@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.BLL.DTO
 {
-    class DiveCertificateDTO
+    public class DiveCertificateDTO
     {
         public int IdCertificate { get; set; }
         public string CertNumber { get; set; }

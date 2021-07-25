@@ -24,7 +24,10 @@ namespace FinalProject.DAL.Repositories
         {
             return db.CertificateLevels.Find(id);
         }
-
+        public CertificateLevel GetId(string level)
+        {
+            return db.CertificateLevels.Find(level);
+        }
         public void Create(CertificateLevel item)
         {
             db.CertificateLevels.Add(item);

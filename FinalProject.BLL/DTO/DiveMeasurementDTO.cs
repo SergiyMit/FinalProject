@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.BLL.DTO
 {
-    class DiveMeasurementDTO
+    public class DiveMeasurementDTO
     {
         public int IdMeasurement { get; set; }
         public int? MaxDiveDeep { get; set; }
