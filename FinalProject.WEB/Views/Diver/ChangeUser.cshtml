@@ -1,0 +1,70 @@
+﻿@model FinalProject.WEB.Models.UserViewModel
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_DiverLayout.cshtml";
+}
+<head>
+    <style>
+        #changeInput {
+            padding: 0px;
+            margin: auto;
+        }
+
+        #changeSubmit {
+            margin-top: 5%;
+            margin-left: 15%;
+        }
+
+        #changeForm {
+            background: #AFEEEE;
+            border-radius: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        label {
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            font-size: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #changeButton {
+            background-color: #00C5BE;
+            border: none;
+            color: #fff;
+            font-size: 1em;
+            padding: 10px;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<h1>Change your info</h1>
+<div class="container register-form" id="changeForm">
+    <div class="form">
+        <div class="form-content">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" id="changeInput">
+                            <label>Login:</label><br />
+                            <input type="text" name="login" value="@Model.Login" required /><br /><br />
+                        </div>
+                        <div class="form-group" id="changeInput">
+                            <label>Password:</label><br />
+                            <input type="password" name="password" value="@Model.Password" required /><br /><br />
+                        </div>
+                        <input type="hidden" value="@Model.IdUser" name="idUser" />
+                        <input type="hidden" value="@Model.UserType" name="userType" />
+                        <div class="form-group" id="changeSubmit">
+                            <input type="submit" value="Change info" id="changeButton" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

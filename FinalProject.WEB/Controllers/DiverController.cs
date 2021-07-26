@@ -18,7 +18,7 @@ namespace FinalProject.WEB.Controllers
             string login = Request.Cookies["userLogin"];
             int id = userService.GetDiverIdByLogin(login);
             DiverDTO diverFromDB = userService.GetDiver(id);
-            DiverViewModel diver = new DiverViewModel { Name = diverFromDB.Name, Surname = diverFromDB.Surname, Age = diverFromDB.Age, Email = diverFromDB.Email, TelNumber = diverFromDB.TelNumber, DeviceNumber = diverFromDB.DeviceNumber };
+            DiverViewModel diver = new DiverViewModel { Name = diverFromDB.Name, Surname = diverFromDB.Surname, Age = diverFromDB.Age, Email = diverFromDB.Email, TelNumber = diverFromDB.TelNumber, DeviceNumber = diverFromDB.DeviceNumber, IdDiver = id };
             return View(diver);
         }
         [HttpPost]
@@ -43,6 +43,38 @@ namespace FinalProject.WEB.Controllers
         public IActionResult ChangeError(DiverViewModel diver)
         {
             return View(diver);
+        }
+        public IActionResult ChangeUser()
+        {
+            string login = Request.Cookies["userLogin"];
+            int userId = userService.GetUserIdByLogin(login);
+            UserDTO user = userService.GetUser(userId);
+            UserViewModel user1 = new UserViewModel { Login = user.Login, IdUser = user.IdUser, Password = user.Password, UserType = user.UserType };
+            return View(user1);
+        }
+
+        [HttpPost]
+        public IActionResult ChangeUser(string login, string password, int userType, int idUser)
+        {
+            UserDTO user = new UserDTO { Login = login, Password = password, IdUser = idUser, UserType = userType };
+            UserViewModel user1 = new UserViewModel { Login = login, Password = password, IdUser = idUser, UserType = userType };
+            bool result = userService.ChangeUser(user);
+            if (result)
+            {
+                string login1 = Request.Cookies["userLogin"];
+                Response.Cookies.Delete(login1);
+                return RedirectToAction("UserChangeSuccesfull", "Diver");
+            }
+            return RedirectToAction("UserChangeError", "Diver", user1);
+        }
+        public IActionResult UserChangeError(UserViewModel user)
+        {
+            return View(user);
+        }
+
+        public IActionResult UserChangeSuccesfull()
+        {
+            return View();
         }
     }
 }

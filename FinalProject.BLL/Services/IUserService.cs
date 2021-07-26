@@ -13,10 +13,6 @@ namespace FinalProject.BLL.Services
         int GetUserIdByLogin(string login);
         bool CheckLogin(string login, string password);
         bool ChangeDiver(DiverDTO diver);
-        /*
-        void ChangeUser(UserDTO user);
-        void ChangeDiver(DiverDTO diver);
-        void ChangeAdmin(AdminDTO admin);
-        */
+        bool ChangeUser(UserDTO user);
     }
 }

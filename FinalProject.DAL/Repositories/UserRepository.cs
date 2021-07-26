@@ -38,6 +38,7 @@ namespace FinalProject.DAL.Repositories
         public void Update(User item)
         {
             db.Update(item);
+            db.SaveChanges();
         }
 
         public IEnumerable<User> Find(Func<User, Boolean> predicate)

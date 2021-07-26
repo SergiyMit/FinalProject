@@ -21,7 +21,8 @@ namespace FinalProject.DAL.Repositories
 
         public Diver Get(int id)
         {
-            return db.Divers.Find(id);
+            var diver = (from d in db.Divers where d.IdDiver == id select d).FirstOrDefault();
+            return diver;
         }
         public Diver GetByLogin(string login)
         {

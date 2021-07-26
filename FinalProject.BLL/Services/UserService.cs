@@ -71,13 +71,37 @@ namespace FinalProject.BLL.Services
             {
                 int idDiver = diver.IdDiver;
                 Diver diver1 = Database.Divers.Get(idDiver);
-                diver1.Name = diver.Name;
+                if (diver1 == null)
+                {
+                    return false;
+                }
                 diver1.Surname = diver.Surname;
+                diver1.Name = diver.Name;
                 diver1.TelNumber = diver.TelNumber;
                 diver1.Email = diver.Email;
                 diver1.Age = diver.Age;
                 diver1.DeviceNumber = diver.DeviceNumber;
                 Database.Divers.Update(diver1);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool ChangeUser(UserDTO user)
+        {
+            try
+            {
+                int idUser = user.IdUser;
+                User user1 = Database.Users.Get(idUser);
+                if (user1 == null)
+                {
+                    return false;
+                }
+                user1.Login = user.Login;
+                user1.Password = user.Password;
+                Database.Users.Update(user1);
                 return true;
             }
             catch
