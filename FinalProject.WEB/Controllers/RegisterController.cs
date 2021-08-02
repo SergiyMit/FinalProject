@@ -24,7 +24,6 @@ namespace FinalProject.WEB.Controllers
             DiverDTO diver = new DiverDTO { Name = name, Surname = surname, Age = age, Email = email, DeviceNumber = deviceNumber, TelNumber = 0 };
             UserDTO user = new UserDTO { Login = login, Password = password, UserType = 1 };
             userService.AddDiver(diver, user);
-            userService.Dispose();
             return View();
         }
     }

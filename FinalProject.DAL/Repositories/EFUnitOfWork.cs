@@ -8,26 +8,13 @@ namespace FinalProject.DAL.Repositories
     public class EFUnitOfWork : IUnitOfWork
     {
         private readonly NixDatabaseContext db;
-        private AdminRepository adminRepository;
         private CertificateLevelRepository certificateLevelRepository;
         private DiveCertificateRepository diveCertificateRepository;
         private DiveMeasurementRepository diveMeasurementRepository;
-        private DiverRepository diverRepository;
-        private UserRepository userRepository;
-        public EFUnitOfWork(string connectionString)
+        public EFUnitOfWork()
         {
             db = new NixDatabaseContext();
         }
-        public IRepository<Admin> Admins
-        {
-            get
-            {
-                if (adminRepository == null)
-                    adminRepository = new AdminRepository(db);
-                return adminRepository;
-            }
-        }
-
         public IRepository<CertificateLevel> CertificateLevels
         {
             get
@@ -56,26 +43,6 @@ namespace FinalProject.DAL.Repositories
                 return diveMeasurementRepository;
             }
         }
-        public IRepository<Diver> Divers
-        {
-            get
-            {
-                if (diverRepository == null)
-                    diverRepository = new DiverRepository(db);
-                return diverRepository;
-            }
-        }
-
-        public IRepository<User> Users
-        {
-            get
-            {
-                if (userRepository == null)
-                    userRepository = new UserRepository(db);
-                return userRepository;
-            }
-        }
-
         public void Save()
         {
             db.SaveChanges();

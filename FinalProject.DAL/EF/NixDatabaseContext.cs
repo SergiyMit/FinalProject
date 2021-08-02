@@ -9,11 +9,6 @@ using Microsoft.EntityFrameworkCore;
         {
         }
 
-        public NixDatabaseContext(DbContextOptions<NixDatabaseContext> options)
-            : base(options)
-        {
-        }
-
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<CertificateLevel> CertificateLevels { get; set; }
         public virtual DbSet<DiveCertificate> DiveCertificates { get; set; }
@@ -25,15 +20,13 @@ using Microsoft.EntityFrameworkCore;
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-MUQMAF1\\MITRIAIEV;Database=NixDatabase;Trusted_Connection=True;");
+                string connectionString = "Server=DESKTOP-MUQMAF1\\MITRIAIEV;Database=NixDatabase;Trusted_Connection=True;";
+                optionsBuilder.UseSqlServer(connectionString);
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Cyrillic_General_CI_AS");
-
             modelBuilder.Entity<Admin>(entity =>
             {
                 entity.HasKey(e => e.IdAdmin)
