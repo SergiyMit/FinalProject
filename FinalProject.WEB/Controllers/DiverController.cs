@@ -8,7 +8,7 @@ namespace FinalProject.WEB.Controllers
 {
     public class DiverController : Controller
     {
-        IUserService userService;
+        private readonly IUserService userService;
         public DiverController()
         {
             userService = new UserService();

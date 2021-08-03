@@ -1,5 +1,4 @@
-﻿using FinalProject.DAL.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using FinalProject.DAL.EF;
@@ -8,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.DAL.Repositories
 {
-    class DiveRepository<T> : IDiveRepository<T> where T: class
+    public class DiveRepository<T> : IDiveRepository<T> where T: class
     {
         private readonly NixDatabaseContext db;
         private readonly DbSet<T> dbSet;

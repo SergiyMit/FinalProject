@@ -5,15 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinalProject.DAL.Repositories
 {
     public class UserRepository<T> : IUserRepository<T> where T : class
     {
         private readonly NixDatabaseContext db;
-        DbSet<T> dbSet;
+        private readonly DbSet<T> dbSet;
         public UserRepository(NixDatabaseContext context)
         {
             this.db = context;

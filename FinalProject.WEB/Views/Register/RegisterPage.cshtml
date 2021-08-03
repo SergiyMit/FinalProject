@@ -3,109 +3,21 @@
     ViewData["Title"] = "RegisterPage";
 }
 <head>
-    <style>
-        #registerInput
-        {
-            padding: 0px;
-            margin: auto;
-        }
-        #registerSubmit
-        {
-            margin-top: 5%;
-            margin-left: 15%;
-        }
-        #registerForm {
-            background: #AFEEEE;
-            border-radius: 10px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        label 
-        {
-                font-family: Arial, Helvetica, sans-serif;
-                color: black;
-                font-size: 20px;
-        }
-        h1 
-        {
-            text-align: center;
-        }
-        .pressed-button {
-            text-decoration: none;
-            display: inline-block;
-            padding: 12px 40px;
-            margin-left: -20%;
-            margin-bottom: 5%;
-            border-radius: 30px;
-            background-image: linear-gradient(45deg, #6ab1d7 0%, #33d9de 50%, #002878 100%);
-            background-position: 100% 0;
-            background-size: 200% 200%;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 24px;
-            font-weight: 300;
-            color: white;
-            box-shadow: 0 16px 32px 0 rgba(0, 40, 120, .35);
-            transition: .5s;
-        }
-
-            .pressed-button:hover {
-                box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
-                background-position: 0 0;
-            }
-        #registerButton {
-            background-color: #00C5BE;
-            border: none;
-            color: #fff;
-            font-size: 1em;
-            padding: 10px;
-            text-transform: uppercase;
-            font-weight: normal;
-        }
-        </style>
-    </head>
-<h1>Registration for divers</h1>
-<div class="container register-form" id="registerForm">
-    <div class="form">
-        <div class="form-content">
-            <form method="post">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group" id="registerInput">
-                            <label>Login:</label><br />
-                            <input type="text" name="login" required /><br /><br />
-                        </div>
-                        <div class="form-group" id="registerInput">
-                            <label>Password:</label><br />
-                            <input type="password" name="password" required /><br /><br />
-                        </div>
-                        <div class="form-group" id="registerInput">
-                            <label>Email:</label><br />
-                            <input type="email" name="email" required /><br /><br />
-                        </div>
-                        <div class="form-group" id="registerInput">
-                            <label>#Device number:</label><br />
-                            <input type="number" name="deviceNumber" required /><br /><br />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group" id="registerInput">
-                            <label>Name:</label><br />
-                            <input type="text" name="name" required /><br /><br />
-                        </div>
-                        <div class="form-group" id="registerInput">
-                            <label>Surname:</label><br />
-                            <input type="text" name="surname" required /><br /><br />
-                        </div>
-                        <div class="form-group" id="registerInput">
-                            <label>Age:</label><br />
-                            <input type="number" name="age" required /><br /><br />
-                        </div>
-                        <div class="form-group" id="registerSubmit">
-                            <input type="submit" value="Register" id="registerButton"/>
-                        </div>
-                        <a href="@Url.Action("Login", "Login")" class="pressed-button">Login</a>
-                    </div>
-                </div>
-            </form>
-        </div>
+    <link rel="stylesheet" href="~/css/form.css">
+</head>
+<form class="decor" method="post">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+        <h3>Registration for divers</h3>
+        <input type="text" name="login" placeholder="Login">
+        <input type="password" name="password" placeholder="Password">
+        <input type="email" name="email" placeholder="Email">
+        <input type="number" name="deviceNumber" placeholder="#Device">
+        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="surname" placeholder="Surname">
+        <input type="number" name="age" placeholder="Age">
+        <input type="submit" value="Sign up">
     </div>
-</div>
+</form>

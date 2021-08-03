@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_DiverLayout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/form.css">
+</head>
+
+<form class="decor" method="post">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+        <h3>Add measurement</h3>
+        <input type="date" name="dateOfDive" placeholder="Date of the dive">
+        <input type="number" name="waterTemperature" placeholder="Water temperature">
+        <input type="number" name="diveTime" placeholder="Dive duration">
+        <input type="number" name="maxDiveDeep" placeholder="Maximum deep of the dive">
+        <input type="submit" value="Add measurement">
+    </div>
+</form>

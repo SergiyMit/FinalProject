@@ -16,6 +16,8 @@ namespace FinalProject.WEB.Controllers
         public IActionResult LogOut()
         {
             string login = Request.Cookies["userLogin"];
+            string idDiver = Request.Cookies["diverId"];
+            Response.Cookies.Delete(idDiver);
             Response.Cookies.Delete(login);
             return RedirectToAction("Index", "Home");
         }

@@ -20,7 +20,9 @@ namespace FinalProject.WEB.Controllers
             bool result = userService.CheckLogin(login, password);
             if (result)
             {
+                string idDiver = userService.GetDiverIdByLogin(login).ToString();
                 Response.Cookies.Append("userLogin",login);
+                Response.Cookies.Append("diverId", idDiver);
                 return RedirectToAction("Index", "DiverMenu");
             }
             return RedirectToAction("LoginError","Login");
