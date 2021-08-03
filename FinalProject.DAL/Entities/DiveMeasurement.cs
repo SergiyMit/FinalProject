@@ -8,6 +8,11 @@ namespace FinalProject.DAL.Entities
 {
     public partial class DiveMeasurement
     {
+        public DiveMeasurement()
+        {
+            Dives = new HashSet<Dive>();
+        }
+
         public int IdMeasurement { get; set; }
         public int? MaxDiveDeep { get; set; }
         public int? DiveTime { get; set; }
@@ -16,5 +21,6 @@ namespace FinalProject.DAL.Entities
         public int? IdDiver { get; set; }
 
         public virtual Diver IdDiverNavigation { get; set; }
+        public virtual ICollection<Dive> Dives { get; set; }
     }
 }

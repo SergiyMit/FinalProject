@@ -1,7 +1,12 @@
 ﻿using FinalProject.DAL.Entities;
-using System;
 using Microsoft.EntityFrameworkCore;
-    namespace FinalProject.DAL.EF
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FinalProject.DAL.EF
 {
     public partial class NixDatabaseContext : DbContext
     {
@@ -9,8 +14,14 @@ using Microsoft.EntityFrameworkCore;
         {
         }
 
+        public NixDatabaseContext(DbContextOptions<NixDatabaseContext> options)
+            : base(options)
+        {
+        }
+
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<CertificateLevel> CertificateLevels { get; set; }
+        public virtual DbSet<Dive> Dives { get; set; }
         public virtual DbSet<DiveCertificate> DiveCertificates { get; set; }
         public virtual DbSet<DiveMeasurement> DiveMeasurements { get; set; }
         public virtual DbSet<Diver> Divers { get; set; }
@@ -20,13 +31,15 @@ using Microsoft.EntityFrameworkCore;
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string connectionString = "Server=DESKTOP-MUQMAF1\\MITRIAIEV;Database=NixDatabase;Trusted_Connection=True;";
-                optionsBuilder.UseSqlServer(connectionString);
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=DESKTOP-MUQMAF1\\MITRIAIEV;Database=NixDatabase;Trusted_Connection=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("Relational:Collation", "Cyrillic_General_CI_AS");
+
             modelBuilder.Entity<Admin>(entity =>
             {
                 entity.HasKey(e => e.IdAdmin)
@@ -61,6 +74,36 @@ using Microsoft.EntityFrameworkCore;
                 entity.Property(e => e.LevelName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Dive>(entity =>
+            {
+                entity.HasKey(e => e.IdDive)
+                    .HasName("PK__Dive__F168BD4EB08295EE");
+
+                entity.ToTable("Dive");
+
+                entity.Property(e => e.DiveActivity)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DivePlace)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DiveSuit)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DiveType)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.IdMeasurementNavigation)
+                    .WithMany(p => p.Dives)
+                    .HasForeignKey(d => d.IdMeasurement)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Dive__IdMeasurem__6FE99F9F");
             });
 
             modelBuilder.Entity<DiveCertificate>(entity =>
@@ -151,4 +194,3 @@ using Microsoft.EntityFrameworkCore;
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
-
