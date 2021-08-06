@@ -25,10 +25,7 @@ namespace FinalProject.WEB.Controllers
                 Response.Cookies.Append("diverId", idDiver);
                 return RedirectToAction("Index", "DiverMenu");
             }
-            return RedirectToAction("LoginError","Login");
-        }
-        public IActionResult LoginError()
-        {
+            ViewBag.Message = "Wrong login or password";
             return View();
         }
     }

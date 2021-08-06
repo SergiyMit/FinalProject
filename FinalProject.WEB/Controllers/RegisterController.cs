@@ -7,7 +7,7 @@ namespace FinalProject.WEB.Controllers
 {
     public class RegisterController : Controller
     {
-        IUserService userService;
+        readonly IUserService userService;
         public RegisterController()
         {
             userService = new UserService();
@@ -21,10 +21,19 @@ namespace FinalProject.WEB.Controllers
         [HttpPost]
         public IActionResult RegisterPage(string login, string password, string name, string surname, int age, string email, int deviceNumber, int telNumber)
         {
-            DiverDTO diver = new DiverDTO { Name = name, Surname = surname, Age = age, Email = email, DeviceNumber = deviceNumber, TelNumber = 0 };
-            UserDTO user = new UserDTO { Login = login, Password = password, UserType = 1 };
-            userService.AddDiver(diver, user);
-            return View();
+            try
+            {
+                DiverDTO diver = new DiverDTO { Name = name, Surname = surname, Age = age, Email = email, DeviceNumber = deviceNumber, TelNumber = 0 };
+                UserDTO user = new UserDTO { Login = login, Password = password, UserType = 1 };
+                userService.AddDiver(diver, user);
+                ViewBag.Message = "Succesfully registered!";
+                return View();
+            }
+            catch
+            {
+                ViewBag.Message = "Error! Try again!";
+                return View();
+            }
         }
     }
 }

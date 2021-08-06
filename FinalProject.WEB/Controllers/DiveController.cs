@@ -67,7 +67,7 @@ namespace FinalProject.WEB.Controllers
                 }
             }
             int pageSize = 3;
-            var count = source.Count();
+            var count = source.Count;
             var items = source.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
             PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);

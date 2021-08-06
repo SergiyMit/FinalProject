@@ -25,15 +25,15 @@ namespace FinalProject.WEB.Controllers
         }
         public IActionResult GetAllowedTime()
         {
-            OxygenCalculationViewModel oxygenResult = new OxygenCalculationViewModel { Result = 0 };
-            return View(oxygenResult);
+            OxygenCalculationViewModel timeResult = new OxygenCalculationViewModel { Result = 0 };
+            return View(timeResult);
         }
         [HttpPost]
         public IActionResult GetAllowedTime(int oxygen, int tank, int deep)
         {
             double result = service.GetAllowedTime(oxygen, tank, deep);
-            OxygenCalculationViewModel oxygenResult = new OxygenCalculationViewModel { Result = result };
-            return View(oxygenResult);
+            OxygenCalculationViewModel timeResult = new OxygenCalculationViewModel { Result = result };
+            return View(timeResult);
         }
     }
 }
