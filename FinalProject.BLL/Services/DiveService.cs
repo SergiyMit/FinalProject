@@ -67,8 +67,6 @@ namespace FinalProject.BLL.Services
             }
             return resultList;
         }
-
-
     }
 
 }

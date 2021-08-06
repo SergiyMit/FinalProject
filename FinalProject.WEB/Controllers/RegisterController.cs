@@ -8,9 +8,9 @@ namespace FinalProject.WEB.Controllers
     public class RegisterController : Controller
     {
         readonly IUserService userService;
-        public RegisterController()
+        public RegisterController(IUserService service)
         {
-            userService = new UserService();
+            userService = service;
         }
 
         [HttpGet]

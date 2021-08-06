@@ -1,6 +1,5 @@
+using FinalProject.BLL.Interfaces;
 using FinalProject.BLL.Services;
-using FinalProject.DAL.Interfaces;
-using FinalProject.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +22,9 @@ namespace FinalProject.WEB
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IOxygenService, OxygenService>();
+            services.AddTransient<IDiveService, DiveService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

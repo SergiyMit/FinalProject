@@ -9,9 +9,9 @@ namespace FinalProject.WEB.Controllers
     public class DiverController : Controller
     {
         private readonly IUserService userService;
-        public DiverController()
+        public DiverController(IUserService service)
         {
-            userService = new UserService();
+            userService = service;
         }
         public IActionResult ChangeDiver()
         {
@@ -30,8 +30,9 @@ namespace FinalProject.WEB.Controllers
             bool result = userService.ChangeDiver(diver);
             if (result)
             {
+                DiverViewModel diver1 = new DiverViewModel { Name = name, Surname = surname, Age = age, Email = email, DeviceNumber = deviceNumber, TelNumber = telNumber, IdDiver = idDiver, UserId = id };
                 ViewBag.Message = "Succesfully changed"!;
-                return View();
+                return View(diver1);
             }
             ViewBag.Message = "Error! Try again!"!;
             return View();

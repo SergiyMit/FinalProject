@@ -7,9 +7,9 @@ namespace FinalProject.WEB.Controllers
     public class CalculationController : Controller
     {
         readonly IOxygenService service;
-        public CalculationController()
+        public CalculationController(IOxygenService serviceI)
             {
-            this.service = new OxygenService();
+            this.service = serviceI;
             }
         public IActionResult GetOxygen()
         {

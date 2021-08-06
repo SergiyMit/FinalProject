@@ -12,7 +12,11 @@ namespace FinalProject.WEB.Controllers
 {
     public class DiveController : Controller
     {
-        private readonly IDiveService diveService = new DiveService();
+        private readonly IDiveService diveService;
+        public DiveController(IDiveService service)
+        {
+            diveService = service;
+        }
         public IActionResult AddMeasurement()
         {
             return View();

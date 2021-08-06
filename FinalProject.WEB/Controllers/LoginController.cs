@@ -6,9 +6,9 @@ namespace FinalProject.WEB.Controllers
     public class LoginController : Controller
     {
         readonly IUserService userService;
-        public LoginController()
+        public LoginController(IUserService service)
         {
-            userService = new UserService();
+            userService = service;
         }
         public IActionResult Login()
         {
