@@ -1,14 +1,13 @@
 ﻿using FinalProject.BLL.DTO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinalProject.BLL.Interfaces
 {
     public interface IDiveService
     {
         public bool AddDiveMeasurement(DiveMeasurementDTO diveMeasurement);
+        public List<DiveMeasurementDTO> GetAllMeasurements();
+        public void AddDive(DiveDTO dive);
+        public List<DiveMeasurementDTO> GetAllMeasurementsForDiver();
     }
 }

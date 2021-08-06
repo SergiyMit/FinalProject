@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_DiverLayout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/formDive.css">
+</head>
+<form method="post" class="decor">
+    <div class="form-inner">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Choose measurement:</th>
+                    <th scope="col">Date of dive</th>
+                    <th scope="col">Time of dive</th>
+                    <th scope="col">Maximum dive deep</th>
+                    <th scope="col">Water temperature</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                        foreach (DiveMeasurementViewModel item in Model)
+                        {
+                        <tr>
+                            <th scope="row"><input type="radio" value="@item.IdMeasurement" name="idMeasurement"></th>
+                            <td>@item.DateOfDive</td>
+                            <td>@item.DiveTime</td>
+                            <td>@item.MaxDiveDeep</td>
+                            <td>@item.WaterTemperature</td>
+                        </tr>
+                            }
+                    }
+            </tbody>
+        </table>
+        <input type="text" name="divePlace" placeholder="Place of the dive" />
+        <input type="number" name="weightAmount" placeholder="Amount of weights" />
+        <input type="text" name="diveType" placeholder="Type of dive" />
+        <input type="text" name="diveActivity" placeholder="Activity during dive" />
+        <input type="text" name="diveSuit" placeholder="Suit type" />
+        <input type="submit" value="Add dive" />
+    </div>
+</form>
+

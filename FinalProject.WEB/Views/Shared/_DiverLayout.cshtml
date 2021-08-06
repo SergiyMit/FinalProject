@@ -47,15 +47,18 @@
                         <a class="nav-link" href="@Url.Action("AddDive", "Dive")" id="navBarElement">Add dive</a>
                     </li>
                     <li class="nav-item active">
+                        <a class="nav-link" href="@Url.Action("GetAllMeasurement", "Dive")" id="navBarElement">Show all measurements</a>
+                    </li>
+                    <li class="nav-item active">
                         <a class="nav-link" href="@Url.Action("GetOxygen", "Calculation")" id="navBarElement">Calculate required oxygen</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("GetAllowedTime", "Calculation")" id="navBarElement">Calculate allowed divetime</a>
                     </li>
-                    <li class="nav-item" >
+                    <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("LogOut", "DiverMenu")" id="navBarElement">Logout</a>
                     </li>
-
+                    
                 </ul>
             </div>
         </nav>
