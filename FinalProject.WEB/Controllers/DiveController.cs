@@ -25,19 +25,13 @@ namespace FinalProject.WEB.Controllers
             bool result = diveService.AddDiveMeasurement(diveMeasurement);
             if (result)
             {
-                return RedirectToAction("MeasurementSuccess", "Dive");
+                ViewBag.Message = "Succesfully added!";
+                return View();
             }
-            return RedirectToAction("MeasurementError", "Dive");
+            ViewBag.Message = "Error! Try again!";
+            return View();
         }
 
-        public IActionResult MeasurementSuccess()
-        {
-            return View();
-        }
-        public IActionResult MeasurementError()
-        {
-            return View();
-        }
 
         public IActionResult AddDive()
         {

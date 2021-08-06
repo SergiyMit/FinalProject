@@ -31,18 +31,11 @@ namespace FinalProject.WEB.Controllers
             bool result = userService.ChangeDiver(diver);
             if (result)
             {
-
-                return RedirectToAction("SuccesfullChange", "Diver", divertToSend);
+                ViewBag.Message = "Succesfully changed"!;
+                return View();
             }
-            return RedirectToAction("ChangeError", "Diver", divertToSend);
-        }
-        public IActionResult SuccesfullChange(DiverViewModel diver)
-        {
-            return View(diver);
-        }
-        public IActionResult ChangeError(DiverViewModel diver)
-        {
-            return View(diver);
+            ViewBag.Message = "Error! Try again!"!;
+            return View();
         }
         public IActionResult ChangeUser()
         {
@@ -65,13 +58,9 @@ namespace FinalProject.WEB.Controllers
                 Response.Cookies.Delete(login1);
                 return RedirectToAction("UserChangeSuccesfull", "Diver");
             }
-            return RedirectToAction("UserChangeError", "Diver", user1);
+            ViewBag.Message = "Error! Try again!";
+            return View();
         }
-        public IActionResult UserChangeError(UserViewModel user)
-        {
-            return View(user);
-        }
-
         public IActionResult UserChangeSuccesfull()
         {
             return View();
