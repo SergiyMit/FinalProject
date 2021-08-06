@@ -27,7 +27,6 @@ namespace FinalProject.WEB.Controllers
             string login = Request.Cookies["userLogin"];
             int id = userService.GetUserIdByLogin(login);
             DiverDTO diver = new DiverDTO { Name = name, Surname = surname, Age = age, Email = email, DeviceNumber = deviceNumber, TelNumber = telNumber, IdDiver = idDiver, UserId = id };
-            DiverViewModel divertToSend = new DiverViewModel { Name = name, Surname = surname, Age = age, Email = email, DeviceNumber = deviceNumber, TelNumber = telNumber, IdDiver = idDiver, UserId = id };
             bool result = userService.ChangeDiver(diver);
             if (result)
             {
@@ -50,7 +49,6 @@ namespace FinalProject.WEB.Controllers
         public IActionResult ChangeUser(string login, string password, int userType, int idUser)
         {
             UserDTO user = new UserDTO { Login = login, Password = password, IdUser = idUser, UserType = userType };
-            UserViewModel user1 = new UserViewModel { Login = login, Password = password, IdUser = idUser, UserType = userType };
             bool result = userService.ChangeUser(user);
             if (result)
             {
