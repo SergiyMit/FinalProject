@@ -1,12 +1,12 @@
 ﻿@model FinalProject.WEB.Models.OxygenCalculationViewModel
 @{
-    ViewData["Title"] = "GetOxygen";
+    ViewData["Title"] = "GetTime";
     Layout = "~/Views/Shared/_DiverLayout.cshtml";
 }
 <head>
     <link rel="stylesheet" href="~/css/formCalculation.css">
 </head>
-<form class="decor" method="post">
+<form class="decor" method="post" id="timeForm">
     <div class="form-left-decoration"></div>
     <div class="form-right-decoration"></div>
     <div class="circle"></div>
@@ -19,3 +19,20 @@
         <h2>Result: @Model.Result minutes</h2>
     </div>
 </form>
+<script>
+    $('form[id="timeForm"]').validate({
+        rules: {
+            oxygen: 'required',
+            deep: 'required',
+            tank: 'required'
+        },
+        messages: {
+            oxygen: 'This field is required!',
+            deep: 'This field is required!',
+            tank: 'This field is required!',
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+</script>

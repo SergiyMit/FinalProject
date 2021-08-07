@@ -6,16 +6,44 @@
 <head>
     <link rel="stylesheet" href="~/css/form.css">
 </head>
-<form class="decor" method="post">
+<form class="decor" method="post" id="changeForm">
     <div class="form-inner">
         <h3>Change your info</h3>
         <label>Login</label>
-        <input type="text" name="login" value="@Model.Login" required />
+        <input type="text" name="login" value="@Model.Login" required id="login" />
         <label>Password</label>
-        <input type="password" name="password" value="@Model.Password" required />
+        <input type="password" name="password" value="@Model.Password" required id="password" />
+        <label>Repeat your password</label>
+        <input type="password" name="passwordRepeat" placeholder="Repeat password" id="passwordRepeat"/>
         <input type="hidden" value="@Model.IdUser" name="idUser" />
         <input type="hidden" value="@Model.UserType" name="userType" />
         <input type="submit" value="Change user's info">
         <h3>@ViewBag.Message</h3>
     </div>
 </form>
+<script>
+    $('form[id="changeForm"]').validate({
+        rules: {
+            login: 'required',
+            password: {
+                required: true,
+                minlength: 6,
+            },
+            passwordRepeat: {
+                required: true,
+                minlength: 6,
+                equalTo: "#password"
+            }
+        },
+        messages: {
+            login: 'This field is required',
+            password: {
+                minlength: 'Password should be at least 6 symbols'
+            },
+            passwordRepeat: 'Passwords should be equal!'
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+</script>

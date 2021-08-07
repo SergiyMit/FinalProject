@@ -5,12 +5,32 @@
 <head>
     <link rel="stylesheet" href="~/css/form.css">
 </head>
-<form class="decor" method="post">
+<form class="decor" method="post" id="loginForm">
     <div class="form-inner">
         <h3>Login for divers</h3>
-        <input type="text" name="login" placeholder="Your login">
-        <input type="password" name="password" placeholder="Your password">
+        <input type="text" name="login" placeholder="Your login" id="login">
+        <input type="password" name="password" placeholder="Your password" id="password">
         <input type="submit" value="Login">
         <h3>@ViewBag.Message</h3>
     </div>
 </form>
+<script>
+    $('form[id="loginForm"]').validate({
+        rules: {
+            login: 'required',
+            password: {
+                required: true,
+                minlength: 6,
+            }
+        },
+        messages: {
+            login: 'This field is required',
+            password: {
+                minlength: 'Password should be at least 6 symbols'
+            }
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+</script>

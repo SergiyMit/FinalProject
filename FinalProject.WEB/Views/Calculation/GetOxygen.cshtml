@@ -7,16 +7,33 @@
 <head>
     <link rel="stylesheet" href="~/css/formCalculation.css">
 </head>
-<form class="decor" method="post">
+<form class="decor" method="post" id="oxygenForm">
     <div class="form-left-decoration"></div>
     <div class="form-right-decoration"></div>
     <div class="circle"></div>
     <div class="form-inner">
         <h3>Calculate required amount of oxygen</h3>
-        <input type="number" class="form-control" name="time" id="oxygen" placeholder="Enter required time for diving" />
+        <input type="number" class="form-control" name="time" id="time" placeholder="Enter required time for diving" />
         <input type="number" class="form-control" name="deep" id="deep" placeholder="Enter required deep" />
         <input type="number" class="form-control" name="tank" id="tank" placeholder="Enter your tank size" />
         <input type="submit" value="Calculate">
         <h2>Result: @Model.Result PSI</h2>
     </div>
 </form>
+<script>
+    $('form[id="oxygenForm"]').validate({
+        rules: {
+            time: 'required',
+            deep: 'required',
+            tank: 'required'
+        },
+        messages: {
+            time: 'This field is required!',
+            deep: 'This field is required!',
+            tank: 'This field is required!',
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+</script>

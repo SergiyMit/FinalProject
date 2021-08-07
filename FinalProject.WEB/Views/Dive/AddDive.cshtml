@@ -19,8 +19,8 @@
             </thead>
             <tbody>
                 @{
-                        foreach (DiveMeasurementViewModel item in Model)
-                        {
+                    foreach (DiveMeasurementViewModel item in Model)
+                    {
                         <tr>
                             <th scope="row"><input type="radio" value="@item.IdMeasurement" name="idMeasurement"></th>
                             <td>@item.DateOfDive</td>
@@ -28,10 +28,11 @@
                             <td>@item.MaxDiveDeep</td>
                             <td>@item.WaterTemperature</td>
                         </tr>
-                            }
                     }
+                }
             </tbody>
         </table>
+      
         <input type="text" name="divePlace" placeholder="Place of the dive" />
         <input type="number" name="weightAmount" placeholder="Amount of weights" />
         <input type="text" name="diveType" placeholder="Type of dive" />

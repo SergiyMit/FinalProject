@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 @{
-                    int count = 1;
+                    int count = Model.PageViewModel.PageNumber*3-2;
                     foreach (DiveMeasurementViewModel item in Model.Measurements)
                     {
                         <tr>

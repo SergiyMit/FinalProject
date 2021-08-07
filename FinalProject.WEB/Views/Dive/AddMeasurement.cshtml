@@ -6,17 +6,36 @@
     <link rel="stylesheet" href="~/css/form.css">
 </head>
 
-<form class="decor" method="post">
+<form class="decor" method="post" id="addMeasurementForm">
     <div class="form-left-decoration"></div>
     <div class="form-right-decoration"></div>
     <div class="circle"></div>
     <div class="form-inner">
         <h3>Add measurement</h3>
-        <input type="date" name="dateOfDive" placeholder="Date of the dive">
-        <input type="number" name="waterTemperature" placeholder="Water temperature">
-        <input type="number" name="diveTime" placeholder="Dive duration">
-        <input type="number" name="maxDiveDeep" placeholder="Maximum deep of the dive">
+        <input type="date" name="dateOfDive" placeholder="Date of the dive" id="dateOfDive">
+        <input type="number" name="waterTemperature" placeholder="Water temperature" id="waterTemperature">
+        <input type="number" name="diveTime" placeholder="Dive duration" id="diveTime">
+        <input type="number" name="maxDiveDeep" placeholder="Maximum deep of the dive" id="maxDiveDeep">
         <input type="submit" value="Add measurement">
         <h2>@ViewBag.Message</h2>
     </div>
 </form>
+<script>
+    $('form[id="addMeasurementForm"]').validate({
+        rules: {
+            dateOfDive: 'required',
+            waterTemperature: 'required',
+            diveTime: 'required',
+            maxDiveDeep: 'required'
+        },
+        messages: {
+            dateOfDive: 'This field is required!',
+            waterTemperature: 'This field is required!',
+            diveTime: 'This field is required!',
+            maxDiveDeep: 'This field is required!'
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+</script>

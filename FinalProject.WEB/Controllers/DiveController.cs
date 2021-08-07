@@ -17,6 +17,20 @@ namespace FinalProject.WEB.Controllers
         {
             diveService = service;
         }
+        public List<DiveMeasurementViewModel> GetMeasurementTable()
+        {
+            List<DiveMeasurementDTO> measurements = diveService.GetAllMeasurements();
+            List<DiveMeasurementViewModel> result = new List<DiveMeasurementViewModel>();
+            int idDiver = Convert.ToInt32(Request.Cookies["diverId"]);
+            foreach (var measurement in measurements)
+            {
+                if (measurement.DiverId == idDiver)
+                {
+                    result.Add(new DiveMeasurementViewModel { DateOfDive = measurement.DateOfDive, DiverId = measurement.DiverId, DiveTime = measurement.DiveTime, IdMeasurement = measurement.IdMeasurement, MaxDiveDeep = measurement.MaxDiveDeep, WaterTemperature = measurement.WaterTemperature });
+                }
+            }
+            return result;
+        }
         public IActionResult AddMeasurement()
         {
             return View();
@@ -39,24 +53,17 @@ namespace FinalProject.WEB.Controllers
 
         public IActionResult AddDive()
         {
-            List<DiveMeasurementDTO> measurements = diveService.GetAllMeasurements();
-            List<DiveMeasurementViewModel> result = new List<DiveMeasurementViewModel>();
-            int idDiver = Convert.ToInt32(Request.Cookies["diverId"]);
-            foreach (var measurement in measurements)
-            {
-                if (measurement.DiverId == idDiver)
-                {
-                    result.Add(new DiveMeasurementViewModel { DateOfDive = measurement.DateOfDive, DiverId = measurement.DiverId, DiveTime = measurement.DiveTime, IdMeasurement = measurement.IdMeasurement, MaxDiveDeep = measurement.MaxDiveDeep, WaterTemperature = measurement.WaterTemperature });
-                }
-            }
+            var result = GetMeasurementTable();
             return View(result);
         }
         [HttpPost]
         public IActionResult AddDive(int idMeasurement, string divePlace, string diveType, int weightAmount, string diveActivity, string diveSuit)
         {
+
             DiveDTO dive = new DiveDTO {DiveActivity = diveActivity, IdMeasurement = idMeasurement, DivePlace = divePlace, DiveSuit = diveSuit, DiveType = diveType, WeightAmount = weightAmount };
             diveService.AddDive(dive);
-            return View();
+            var result = GetMeasurementTable();
+            return View(result);
         }
         public IActionResult GetAllMeasurement(int page = 1)
         {

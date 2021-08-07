@@ -5,24 +5,57 @@
 }
 <head>
     <link rel="stylesheet" href="~/css/form.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
-<form class="decor" method="post">
+<form class="decor" method="post" id="diverChange">
     <div class="form-inner">
         <h3>Change your info</h3>
         <label>Telephone number</label>
-        <input type="number" name="telNumber" value="@Model.TelNumber" required />
+        <input type="number" name="telNumber" value="@Model.TelNumber" id="telNumber" required />
         <label>Email</label>
-        <input type="email" name="email" value="@Model.Email" required />
+        <input type="email" name="email" value="@Model.Email" id="email" required />
         <label>#Device</label>
-        <input type="number" name="deviceNumber" value="@Model.DeviceNumber" required />
+        <input type="number" name="deviceNumber" value="@Model.DeviceNumber" id="deviceNumber" required />
         <label>Name</label>
-        <input type="text" name="name" value="@Model.Name" required />
+        <input type="text" name="name" value="@Model.Name" id="name" required />
         <label>Surname</label>
-        <input type="text" name="surname" value="@Model.Surname" required />
+        <input type="text" name="surname" value="@Model.Surname" id="surname" required />
         <label>Age</label>
-        <input type="number" name="age" value="@Model.Age" required />
+        <input type="number" name="age" value="@Model.Age" id="age" required />
         <input type="hidden" value="@Model.IdDiver" name="idDiver" />
         <input type="submit" value="Change diver's info">
         <h3>@ViewBag.Message</h3>
     </div>
 </form>
+<script>
+    $('form[id="diverChange"]').validate({
+        rules: {
+            email: {
+                required: true,
+                email: true,
+            },
+            
+            name: {
+                required: true
+            },
+            surname: 'required',
+            age: {
+                required: true,
+                range: [14, 70]
+            }
+        },
+        messages: {
+            name: 'This field is required',
+            surname: 'This field is required',
+            email: 'Enter a valid email',
+            age: 'Incorrect age!'
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+</script>
