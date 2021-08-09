@@ -25,6 +25,8 @@ namespace FinalProject.WEB
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IOxygenService, OxygenService>();
             services.AddTransient<IDiveService, DiveService>();
+            services.AddTransient<IChartService, ChartService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_DiverLayout.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<script src="script.js"></script>
+<link rel="stylesheet" href="~/css/formDive.css">
+<form method="post" class="decor">
+    <div class="form-inner">
+        <label>From:</label>
+        <input type="date" name="dateStart" />
+        <label>To:</label>
+        <input type="date" name="dateEnd" />
+        <input type="submit" value="Add dive" />
+    </div>
+</form>
+<div class="container">
+    <canvas id="myChart" width="600" height="400"></canvas>
+    <p>@ViewBag.Result</p>
+</div>
+
+<script>
+    var arrayDate = JSON.parse('@Html.Raw(Json.Serialize(ViewBag.Date))');
+    var arrayTime = JSON.parse('@Html.Raw(Json.Serialize(ViewBag.Time))');
+    for (var i = 0; i < arrayTime.length; i++) {
+        arrayTime[i] = Number.parseInt(arrayTime[i]);
+    }
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: arrayDate,
+            datasets: [{
+                label: 'Dive time',
+                data: arrayTime,
+                backgroundColor: [
+                    'rgba(216, 27, 96, 0.6)',
+                    'rgba(3, 169, 244, 0.6)',
+                    'rgba(255, 152, 0, 0.6)',
+                    'rgba(29, 233, 182, 0.6)',
+                    'rgba(156, 39, 176, 0.6)',
+                    'rgba(187, 26, 176, 0.6)',
+                    'rgba(132, 27, 176, 0.6)',
+                    'rgba(15, 18, 58, 0.6)',
+                    'rgba(16, 15, 176, 0.6)',
+                    'rgba(19, 48, 176, 0.6)',
+                    'rgba(84, 110, 122, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(216, 27, 96, 1)',
+                    'rgba(3, 169, 244, 1)',
+                    'rgba(255, 152, 0, 1)',
+                    'rgba(29, 233, 182, 1)',
+                    'rgba(156, 39, 176, 1)',
+                    'rgba(156, 39, 176, 1)',
+                    'rgba(156, 39, 176, 1)',
+                    'rgba(156, 39, 176, 1)',
+                    'rgba(156, 39, 176, 1)',
+                    'rgba(84, 110, 122, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: 'Dive time of previous dives',
+                position: 'top',
+                fontSize: 16,
+                padding: 20
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        min: 0
+                    }
+                }]
+            }
+        }
+    });
+</script>

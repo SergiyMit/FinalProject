@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using FinalProject.BLL.Services;
 using FinalProject.BLL.DTO;
+using System.Collections.Generic;
 
 namespace FinalProject.Test
 {
@@ -9,6 +10,7 @@ namespace FinalProject.Test
     {
         readonly OxygenService oxygenService = new OxygenService();
         readonly UserService userService = new UserService();
+        readonly ChartService chartService = new ChartService();
         [Theory]
         [InlineData(15, 25, 145, 57)]
         [InlineData(45, 50, 130, 101)]
@@ -45,6 +47,16 @@ namespace FinalProject.Test
             var result = userService.GetDiver(i);
             Assert.True(expected.Name == result.Name && expected.Surname == result.Surname && expected.Age == result.Age && expected.Email == result.Email
                 && expected.DeviceNumber == result.DeviceNumber && expected.TelNumber == result.TelNumber && expected.UserId == result.UserId);
+        }
+        [Fact]
+        public void GetMeasurementChartTest()
+        {
+            DateTime dateStart = DateTime.Now;
+            DateTime dateEnd = new DateTime(2022, 5, 1, 8, 30, 52);
+            List<DiveMeasurementDTO> result = chartService.GetOxygenChartData(dateStart, dateEnd);
+            var resultElement = result[1].DateOfDive;
+            var expected = DateTime.Now;
+            Assert.Equal(expected, resultElement);
         }
 
     }

@@ -1,12 +1,10 @@
 ﻿using FinalProject.BLL.DTO;
 using FinalProject.BLL.Interfaces;
-using FinalProject.BLL.Services;
 using FinalProject.WEB.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace FinalProject.WEB.Controllers
 {
