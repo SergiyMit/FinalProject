@@ -6,8 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Syncfusion.Pdf;
+using Syncfusion.Pdf.Parsing;
+using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
+using System.Data;
 using System.IO;
+using Syncfusion.Drawing;
 
 namespace FinalProject.WEB.Controllers
 {
@@ -112,11 +116,22 @@ namespace FinalProject.WEB.Controllers
             PdfDocument doc = new PdfDocument();
             PdfPage page = doc.Pages.Add();
             PdfGrid pdfGrid = new PdfGrid();
-            List<object> data = new List<object>();
-            data.Add(log);
-            IEnumerable<object> dataTable = data;
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Place of the dive");
+            dataTable.Columns.Add("Amount of weights");
+            dataTable.Columns.Add("Type of the dive");
+            dataTable.Columns.Add("Activity during dive");
+            dataTable.Columns.Add("Divesuit type");
+            dataTable.Columns.Add("Max deep during dive");
+            dataTable.Columns.Add("Time of the dive (minutes)");
+            dataTable.Columns.Add("Water temperature (celsius)");
+            dataTable.Columns.Add("Date of the dive");
+            dataTable.Columns.Add("Signature (Stamp)");
+            dataTable.Rows.Add(new object[] {log.DivePlace.ToString(), log.WeightAmount.ToString(), log.DiveType.ToString(), log.DiveActivity.ToString(),
+                log.DiveSuit.ToString(), log.MaxDiveDeep.ToString(),
+                log.DiveTime.ToString(), log.WaterTemperature.ToString(), log.DateOfDive.ToString(), ""  });
             pdfGrid.DataSource = dataTable;
-            pdfGrid.Draw(page, new Syncfusion.Drawing.PointF(10, 10));
+            pdfGrid.Draw(page, new PointF(10, 10));
             MemoryStream stream = new MemoryStream();
             doc.Save(stream);
             stream.Position = 0;
@@ -124,6 +139,7 @@ namespace FinalProject.WEB.Controllers
             string contentType = "application/pdf";
             string fileName = "DiveLog.pdf";
             return File(stream, contentType, fileName);
+
         }
     }
 }
