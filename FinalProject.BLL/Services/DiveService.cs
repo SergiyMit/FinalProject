@@ -5,6 +5,7 @@ using FinalProject.DAL.Entities;
 using FinalProject.DAL.Interfaces;
 using FinalProject.DAL.Repositories;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FinalProject.BLL.Services
 {
@@ -66,6 +67,31 @@ namespace FinalProject.BLL.Services
                     resultList.Add(new DiveMeasurementDTO { DateOfDive = measurement.DateOfDive, DiverId = measurement.IdDiver, DiveTime = measurement.DiveTime, IdMeasurement = measurement.IdMeasurement, MaxDiveDeep = measurement.MaxDiveDeep, WaterTemperature = measurement.WaterTemperature });
             }
             return resultList;
+        }
+        public List<DiveDTO> GetAllDiveForDiver()
+        {
+            var result = diveRepository.GetAll();
+            var resultList = new List<DiveDTO>();
+            foreach (Dive dive in result)
+            {
+                resultList.Add(new DiveDTO {DiveActivity = dive.DiveActivity, DivePlace = dive.DivePlace, DiveSuit = dive.DiveSuit, DiveType = dive.DiveType, WeightAmount = dive.WeightAmount, IdDive = dive.IdDive, IdMeasurement = dive.IdMeasurement});
+            }
+            return resultList;
+        }
+
+        public DiveDTO GetDive(int idDive)
+        {
+            Dive dive = diveRepository.Get(idDive);
+            DiveDTO result = new DiveDTO { DiveActivity = dive.DiveActivity, DivePlace = dive.DivePlace, DiveSuit = dive.DiveSuit, DiveType = dive.DiveType, WeightAmount = dive.WeightAmount, IdDive = dive.IdDive, IdMeasurement = dive.IdMeasurement };
+            return result;
+        }
+
+        public DiveMeasurementDTO GetMeasurementByDive(int idDive)
+        {
+            List<DiveMeasurementDTO> measurements = GetAllMeasurementsForDiver();
+            int idMeasurement = GetDive(idDive).IdMeasurement;
+            DiveMeasurementDTO result = measurements.DefaultIfEmpty(null).FirstOrDefault(m => m.IdMeasurement == idMeasurement);
+            return result;
         }
     }
 

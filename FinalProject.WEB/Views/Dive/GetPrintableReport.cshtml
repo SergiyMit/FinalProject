@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_DiverLayout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/formDive.css">
+</head>
+<form method="post" class="decor">
+    <div class="form-inner">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Choose dive:</th>
+                    <th scope="col">DiveSuit</th>
+                    <th scope="col">type of dive</th>
+                    <th scope="col">Activity during dive</th>
+                    <th scope="col">Place of dive</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (DiveViewModel item in Model)
+                    {
+                        <tr>
+                            <th scope="row"><input type="radio" value="@item.IdDive" name="idDive"></th>
+                            <td>@item.DiveSuit</td>
+                            <td>@item.DiveType</td>
+                            <td>@item.DiveActivity</td>
+                            <td>@item.DivePlace</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <input type="submit" value="Create dive report" />
+    </div>
+</form>
+

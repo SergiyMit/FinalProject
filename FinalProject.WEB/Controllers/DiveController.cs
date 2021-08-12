@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Grid;
+using System.IO;
 
 namespace FinalProject.WEB.Controllers
 {
@@ -86,6 +89,41 @@ namespace FinalProject.WEB.Controllers
                 Measurements = items
             };
             return View(viewModel);
+        }
+        public IActionResult GetPrintableReport()
+        {
+            List<DiveDTO> dive = diveService.GetAllDiveForDiver();
+            List<DiveViewModel> result = new List<DiveViewModel>();
+            foreach (DiveDTO item in dive)
+            {
+                result.Add(new DiveViewModel {DiveActivity = item.DiveActivity, DivePlace = item.DivePlace, DiveSuit = item.DiveSuit, DiveType = item.DiveType, IdDive = item.IdDive, IdMeasurement = item.IdMeasurement, WeightAmount = item.WeightAmount });
+            }
+            return View(result);
+        }
+        [HttpPost]
+        public IActionResult GetPrintableReport(int idDive)
+        {
+            DiveDTO dive = diveService.GetDive(idDive);
+            DiveMeasurementDTO measurement = diveService.GetMeasurementByDive(idDive);
+            LogViewModel log = new LogViewModel { DateOfDive = measurement.DateOfDive,
+                DiveActivity = dive.DiveActivity, DivePlace = dive.DivePlace, DiveSuit = dive.DiveSuit,
+                DiveTime = measurement.DiveTime, DiveType = dive.DiveType, MaxDiveDeep = measurement.MaxDiveDeep,
+                WaterTemperature = measurement.WaterTemperature, WeightAmount = dive.WeightAmount };
+            PdfDocument doc = new PdfDocument();
+            PdfPage page = doc.Pages.Add();
+            PdfGrid pdfGrid = new PdfGrid();
+            List<object> data = new List<object>();
+            data.Add(log);
+            IEnumerable<object> dataTable = data;
+            pdfGrid.DataSource = dataTable;
+            pdfGrid.Draw(page, new Syncfusion.Drawing.PointF(10, 10));
+            MemoryStream stream = new MemoryStream();
+            doc.Save(stream);
+            stream.Position = 0;
+            doc.Close(true);
+            string contentType = "application/pdf";
+            string fileName = "DiveLog.pdf";
+            return File(stream, contentType, fileName);
         }
     }
 }
