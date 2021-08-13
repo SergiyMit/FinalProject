@@ -17,8 +17,14 @@ namespace FinalProject.WEB.Controllers
         {
             string login = Request.Cookies["userLogin"];
             string idDiver = Request.Cookies["diverId"];
-            Response.Cookies.Delete(idDiver);
-            Response.Cookies.Delete(login);
+            if (login != null)
+            {
+                Response.Cookies.Delete(login);
+            }
+            if (idDiver != null)
+            {
+                Response.Cookies.Delete(idDiver);
+            }
             return RedirectToAction("Index", "Home");
         }
     }
