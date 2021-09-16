@@ -35,6 +35,7 @@ namespace FinalProject.Test
         public void GetUserTest()
         {
             int i = 1002;
+            int j = 0;
             UserDTO expected = new UserDTO { IdUser = 1002, Login = "TestLogin2", Password = "123456", UserType = 1 };
             var result = userService.GetUser(i);
             Assert.True(expected.IdUser == result.IdUser && expected.Login == result.Login && expected.Password == result.Password && expected.UserType == result.UserType);
